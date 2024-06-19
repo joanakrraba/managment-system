@@ -1,7 +1,9 @@
 from django.contrib import admin
+from .models import Role , User
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import Role,User
-from .models import AbstractUser
+from django.contrib.auth.models import AbstractUser
+
+from .models import User
 
 
 class RoleAdmin(admin.ModelAdmin):
@@ -10,6 +12,8 @@ class RoleAdmin(admin.ModelAdmin):
     list_filter = ('name',)
 
 admin.site.register(Role, RoleAdmin)
+
+
 
 class UserAdmin(BaseUserAdmin):
     fieldsets = (
@@ -32,5 +36,4 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('username', 'first_name', 'last_name', 'email')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups', 'role')
 
-admin.site.unregister(AbstractUser)
 admin.site.register(User, UserAdmin)
