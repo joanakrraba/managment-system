@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import Role,User
-from .models import AbstractUser
+from .models import User
+from .models import Role
 
 
 class RoleAdmin(admin.ModelAdmin):
@@ -32,5 +32,9 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('username', 'first_name', 'last_name', 'email')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups', 'role')
 
-admin.site.unregister(AbstractUser)
+
 admin.site.register(User, UserAdmin)
+
+
+
+
