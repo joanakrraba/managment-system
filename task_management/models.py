@@ -34,3 +34,10 @@ class Task(models.Model):
     status = models.CharField(max_length=225,choices=Status,default="")
 
 
+class Attachment(models.Model):
+    task = models.ForeignKey(Task,on_delete=models.SET_NULL,related_name='tasks',null=True)
+    file = models.FileField(upload_to='attachments/')
+    createdDate = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(User,on_delete=models.SET_NULL,related_name='attachments_created',null=True)
+    last_modified_date = models.DateTimeField(auto_now=True)
+    last_modified_by = models.ForeignKey(User,on_delete=models.SET_NULL,related_name='attachments_modified',null=True)
