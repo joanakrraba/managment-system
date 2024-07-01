@@ -4,6 +4,7 @@ from Users.models import User
 
 
 
+
 Priority_Choices = (
     ("Urgent","Urgent"),
     ("High","High"),
@@ -41,3 +42,25 @@ class Attachment(models.Model):
     created_by = models.ForeignKey(User,on_delete=models.SET_NULL,related_name='attachments_created',null=True)
     last_modified_date = models.DateTimeField(auto_now=True)
     last_modified_by = models.ForeignKey(User,on_delete=models.SET_NULL,related_name='attachments_modified',null=True)
+
+
+class Industry(models.Model):
+    name = models.CharField(max_length=225)
+    description = models.TextField()
+
+class Client(models.Model):
+    name = models.CharField(max_length=225)
+    description = models.TextField()
+    active = models.BooleanField(default=False)
+    industry = models.ForeignKey(Industry,related_name="industry_clients",on_delete=models.SET_NULL,null=True)
+    email = models.EmailField(max_length=254)
+    phone = models.CharField(max_length=20)
+    user = models.ForeignKey(User,on_delete=models.SET_NULL,related_name="user_clients",null=True)
+
+class Project(models.Model):
+    client = models.ForeignKey(Client,on_delete=models.CASCADE)
+    name = models.CharField(max_length=225)
+    status = models.CharField(max_length=225,choices=Status,default="Draft")
+    start_date = models.DateField()
+    end_date = models.DateField()
+    total_costs = models.DecimalField(max_digits=10, decimal_places=2)
