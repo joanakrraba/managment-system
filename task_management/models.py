@@ -64,3 +64,4 @@ class Project(models.Model):
     start_date = models.DateField()
     end_date = models.DateField()
     total_costs = models.DecimalField(max_digits=10, decimal_places=2)
+
