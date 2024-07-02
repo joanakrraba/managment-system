@@ -6,26 +6,39 @@
     <meta charset="UTF-8">
     <title>Client List</title>
     {% include 'head.html' %}
+   
 </head>
 <body>
-    <header>
+  
+ 
          <table class="table table-striped">
               <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Active</th>
+                  <th>Industry</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>User</th>
+              </thead>
               {{ forloop.counter }}
                 <tr>
                   {% for client in clients %}
-                  <th scope="col">#</th>
-                  <th>{{ client.name }}</th>
-                  <th>{{ client.description }}</th>
-                  <th scope="col">{% if client.active %}active-true{% else %}active-false{% endif %}</th>
-                  <th>{{ client.industry }}</th>
-                  <th>{{ client.email }}</th>
-                  <th>{{ client.phone }}</th>
-                  <th>{{ client.user }}</th>
+                  <td scope="col">{{ forloop.counter }}</td>
+                  <td>{{ client.name }}</td>
+                  <td>{{ client.description }}</td>
+                  <td scope="col">{% if client.active %}active{% else %}active{% endif %}</td>
+                  <td>{{ client.industry.name }}</td>
+                  <td>{{ client.email }}</td>
+                  <td>{{ client.phone }}</td>
+                  <td>{{ client.user }}</td>
                 </tr>
               {% endfor %}
-              </thead>
+
          </table>
-    </header>
+
+        
 </body>
 </html>
