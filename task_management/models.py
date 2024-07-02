@@ -56,7 +56,6 @@ class Client(models.Model):
     email = models.EmailField(max_length=254)
     phone = models.CharField(max_length=20)
     user = models.ForeignKey(User,on_delete=models.SET_NULL,related_name="user_clients",null=True)
-
 class Project(models.Model):
     client = models.ForeignKey(Client,on_delete=models.CASCADE)
     name = models.CharField(max_length=225)

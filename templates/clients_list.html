@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client List</title>
+    {% include 'head.html' %}
+</head>
+<body>
+    <header>
+         <table class="table table-striped">
+              <thead>
+              {{ forloop.counter }}
+                <tr>
+                  {% for client in clients %}
+                  <th scope="col">#</th>
+                  <th>{{ client.name }}</th>
+                  <th>{{ client.description }}</th>
+                  <th scope="col">{% if client.active %}active-true{% else %}active-false{% endif %}</th>
+                  <th>{{ client.industry }}</th>
+                  <th>{{ client.email }}</th>
+                  <th>{{ client.phone }}</th>
+                  <th>{{ client.user }}</th>
+                </tr>
+              {% endfor %}
+              </thead>
+         </table>
+    </header>
+</body>
+</html>

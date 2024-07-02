@@ -27,15 +27,14 @@ admin.site.register(Bill,BillAdmin)
 
 class PaymentRequestAdmin(admin.ModelAdmin):
     list_display = ('name','description',
-                    'bill',
-                    'amount','status',
-                    'created_date')
+                    'bill','amount',
+                    'status','created_date')
 admin.site.register(PaymentRequest,PaymentRequestAdmin)
 
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('name','cost',
                     'bill','client',
                     'project','task',
-                    'amount','created_date')
+                    'amount')
 
 admin.site.register(Payment,PaymentAdmin)

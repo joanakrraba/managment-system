@@ -54,4 +54,4 @@ class Payment(models.Model):
     project = models.ForeignKey(Project,related_name='project_payments',on_delete=models.SET_NULL,null=True)
     task = models.ForeignKey(Task,related_name='task_payments',on_delete=models.SET_NULL,null=True)
     amount = models.DecimalField(max_digits=10,decimal_places=2)
-    created_date = models.DateTimeField()
+
