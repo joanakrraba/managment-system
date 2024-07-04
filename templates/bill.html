@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bill</title>
+    {% include 'head.html' %}
+</head>
+
+<body>
+{% block navbar %}
+     {% include 'C:\Users\admin\PycharmProjects\ManagmentSystem\templates\website-menu-09\index.html' %}
+{% endblock %}
+      <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th>Name</th>
+                  <th>Client</th>
+                  <th>Project</th>
+                  <th>Description</th>
+                  <th>Bill Registered Date</th>
+                  <th>Bill Paid Date</th>
+                  <th>Total</th>   
+                  <th>Status</th>   
+                  <th>Created Date</th>    
+              </thead>
+              {{ forloop.counter }} 
+                <tr>
+                  {% for bill in bills %}
+                  <td scope="col">{{ forloop.counter }}</td>
+                  <td>{{ bill.name }}</td>
+                  <td>{{ bill.client }}</td>
+                  <td>{{ bill.project }}</td>
+                  <td>{{ bill.description }}</td>
+                  <td>{{ bill.bill_registered_date }}</td>
+                  <td>{{ bill.bill_paid_date}}</td> 
+                  <td>{{ bill.total}}</td>
+                  <td>{{ bill.status }}</td>    
+                  <td>{{ bill.created_date }}</td>         
+                </tr>
+              {% endfor %}
+
+    </table>
+</body>
+</html>

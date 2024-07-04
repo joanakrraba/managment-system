@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cost</title>
+    {% include 'head.html' %}
+</head>
+<body>
+     <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th>Name</th>
+                  <th>Amount</th>
+                  <th>Client</th>
+                  <th>Task</th>
+                  <th>Description</th>
+                  <th>Project</th>
+                  <th>Status</th>  
+                  <th>Created Date</th> 
+                  <th>Created By</th> 
+                  <th>Last Modified Date</th>   
+                  <th>Last Modified By</th>     
+              </thead>
+              {{ forloop.counter }} 
+                <tr>
+                  {% for cost in costs %}
+                  <td scope="col">{{ forloop.counter }}</td>
+                  <td>{{ cost.name }}</td>
+                  <td>{{ cost.amount }}</td>
+                  <td>{{ cost.client  }}</td>
+                  <td>{{ cost.task }}</td>
+                  <td>{{ cost.description }}</td>
+                  <td>{{ cost.project }}</td>
+                  <td>{{ cost.status }}</td>  
+                  <td>{{ cost.created_date }}</td> 
+                  <td>{{ cost.created_by }}</td> 
+                  <td>{{ cost.last_modified_date }}</td>
+                  <td>{{ cost.last_modified_by }}</td>           
+                </tr>
+              {% endfor %}
+
+         </table>
+</body>
+</html>

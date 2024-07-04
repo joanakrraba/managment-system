@@ -21,4 +21,5 @@ from django.urls import path
 from .import views
 urlpatterns = [
     path('client_list/', views.client_list, name='client_list'),
+    path('project_list/', views.project_list, name='project_list'),
 ]

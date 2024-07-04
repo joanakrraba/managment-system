@@ -9,9 +9,7 @@
    
 </head>
 <body>
-  
- 
-         <table class="table table-striped">
+        <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
@@ -27,7 +25,7 @@
                 <tr>
                   {% for client in clients %}
                   <td scope="col">{{ forloop.counter }}</td>
-                  <td>{{ client.name }}</td>
+                   <td>{{ client.name }}</td>   
                   <td>{{ client.description }}</td>
                   <td scope="col">{% if client.active %}active{% else %}active{% endif %}</td>
                   <td>{{ client.industry.name }}</td>

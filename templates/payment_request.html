@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Payment Request</title>
+    {% include 'head.html' %}
+</head>
+<body>
+    <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Bill</th>
+                  <th>Cost</th>
+                  <th>Amount</th>
+                  <th>status</th>
+                  <th>Created Date</th>  
+                  
+              </thead>
+              {{ forloop.counter }} 
+                <tr>
+                  {% for payment_request in payment_requests %}
+                  <td scope="col">{{ forloop.counter }}</td>
+                  <td>{{ payment_request.name }}</td>
+                  <td>{{ payment_request.description }}</td>
+                  <td>{{ payment_request.bill  }}</td>
+                  <td>{{ payment_request.cost }}</td>
+                  <td>{{ payment_request.amount }}</td>
+                  <td>{{ payment_request.status }}</td>
+                  <td>{{ payment_request.created_date }}</td>      
+                </tr>
+              {% endfor %}
+
+         </table>
+</body>
+</html>

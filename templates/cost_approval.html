@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cost Approval</title>
+    {% include 'head.html' %}
+</head>
+<body>
+    <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th>Name</th>
+                  <th>Cost</th>
+                  <th>Status</th>
+                  <th>Task</th>
+                  <th>Created Date</th>
+                  <th>Created By</th>
+                  <th>Last Modified Date</th>   
+                  <th>Last Modified By</th>     
+              </thead>
+              {{ forloop.counter }} 
+                <tr>
+                  {% for cost_approval in cost_approvals %}
+                  <td scope="col">{{ forloop.counter }}</td>
+                  <td>{{ cost_approval.name }}</td>
+                  <td>{{ cost_approval.cost }}</td>
+                  <td>{{ cost_approval.client  }}</td>
+                  <td>{{ cost_approval.task }}</td>
+                  <td>{{ cost_approval.created_date }}</td>
+                  <td>{{ cost_approval.created_by }}</td> 
+                  <td>{{ cost_approval.last_modified_date }}</td>
+                  <td>{{ cost_approval.last_modified_by }}</td>           
+                </tr>
+              {% endfor %}
+
+    </table>
+</body>
+</html>

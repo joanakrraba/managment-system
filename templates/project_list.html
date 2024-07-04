@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project List</title>
+    {% include 'head.html' %}
+</head>
+<body>
+    <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Bill</th>
+                  <th>Cost</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                   <th>Created Date</th>
+              </thead>
+              {{ forloop.counter }} 
+                <tr>
+                  {% for project in project %}
+                  <td scope="col">{{ forloop.counter }}</td>
+                  <td>{{ project.client.name }}</td>
+                  <td>{{ project.name  }}</td>
+                  <td>{{ project.status }}</td>
+                  <td>{{ project.start_date }}</td>
+                  <td>{{ project.end_date }}</td>
+                  <td>{{ project.total_cost }}</td>
+                </tr>
+              {% endfor %}
+
+         </table>
+</body>
+</html>
