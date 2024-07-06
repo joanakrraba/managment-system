@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Management System {% endblock %}</title>
+    {% include 'head.html' %}
+
+    
+  </head>
+  <body>
+  
+    <div class="site-wrap">
+    {% block navbar %}
+        {% include "navbar.html" %}
+    {% endblock %}
+
+    {% block content %}
+    
+    {% endblock %}
+
+    </div>
+    
+
+    </body>
+</html>
