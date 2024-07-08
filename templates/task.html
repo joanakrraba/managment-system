@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task</title>
+    {% include 'head.html' %}
+</head>
+<body>
+    <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th>title</th>
+                  <th>assegnee</th>
+                  <th>reporter</th>
+                  <th>deadlineDate</th>
+                  <th>createdDate</th>
+                  <th>created_by</th>
+                  <th>last_modified_by</th>
+              </thead>
+              {{ forloop.counter }}
+                <tr>
+                  {% for task in tasks %}
+                  <td scope="col">{{ forloop.counter }}</td>
+                   <td>{{ task.title }}</td>   
+                  <td>{{ task.assegnee }}</td>
+                  <td>{{ task.reporter }}</td>
+                  <td>{{ task.dead_line_date }}</td>
+                  <td>{{ task.created_date }}</td>
+                  <td>{{ task.created_by }}</td>
+                  <td>{{ task.last_modified_by}}</td>    
+                </tr>
+              {% endfor %}
+
+         </table>
+</body>
+</html>

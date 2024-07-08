@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Project, Attachment,Industry,Client
+from .models import Task, Project, Attachment, Industry, Client
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -37,5 +37,7 @@ class ProjectAdmin(admin.ModelAdmin):
                     "status","start_date",
                     "end_date","total_costs"]
 admin.site.register(Project,ProjectAdmin)
+
+
 
 

@@ -28,7 +28,7 @@ admin.site.register(Bill,BillAdmin)
 class PaymentRequestAdmin(admin.ModelAdmin):
     list_display = ('name','description',
                     'bill','amount',
-                    'status','created_date')
+                    'status')
 admin.site.register(PaymentRequest,PaymentRequestAdmin)
 
 class PaymentAdmin(admin.ModelAdmin):
