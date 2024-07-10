@@ -1,42 +1,36 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Client List</title>
+    <title>Project List</title>
     {% include 'head.html' %}
-   
 </head>
 <body>
-        <table class="table table-striped">
+    <table class="table table-striped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th>Name</th>
                   <th>Description</th>
-                  <th>Active</th>
-                  <th>Industry</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>User</th>
+                  <th>Bill</th>
+                  <th>Cost</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                   <th>Created Date</th>
               </thead>
-              {{ forloop.counter }}
+              {{ forloop.counter }} 
                 <tr>
-                  {% for client in clients %}
+                  {% for project in project %}
                   <td scope="col">{{ forloop.counter }}</td>
-                   <td>{{ client.name }}</td>   
-                  <td>{{ client.description }}</td>
-                  <td scope="col">{% if client.active %}active{% else %}active{% endif %}</td>
-                  <td>{{ client.industry.name }}</td>
-                  <td>{{ client.email }}</td>
-                  <td>{{ client.phone }}</td>
-                  <td>{{ client.user }}</td>
+                  <td>{{ project.client.name }}</td>
+                  <td>{{ project.name  }}</td>
+                  <td>{{ project.status }}</td>
+                  <td>{{ project.start_date }}</td>
+                  <td>{{ project.end_date }}</td>
+                  <td>{{ project.total_cost }}</td>
                 </tr>
               {% endfor %}
 
          </table>
-
-        
 </body>
 </html>
