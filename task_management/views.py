@@ -9,7 +9,16 @@ def task(request):
     context = {'tasks': tasks}
     return render(request, 'task.html',context)
 
+def client_list(request):
+    client = Client.objects.all()
+    context = {'clients': client}
+    return render(request, 'client_list.html',context)
 
+
+def project_list(request):
+    project = Project.objects.all()
+    context = {'projects': project}
+    return render(request, 'project_list.html',context)
 
 def create_client(request):
     if request.method == 'POST':
@@ -20,7 +29,7 @@ def create_client(request):
         else:
             form = ClientForm()
 
-        return render(request, 'create_client.html', {'form': form})
+        return render(request, 'client_list.html', {'form': form})
 
 def create_project (request):
     if request.method == 'POST':
