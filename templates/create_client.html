@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Clients
+{% endblock %}
+
+{% block content %}
+    
+  {% block client_table %}
+    {% include 'client_table.html' %}
+  {% endblock%}
+
+{% endblock %}

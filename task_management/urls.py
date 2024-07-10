@@ -1,26 +1,27 @@
-"""
-URL configuration for ManagmentSystem project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-
-
 
 from django.urls import path
+<<<<<<< Updated upstream
 from .import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+
 urlpatterns = [
     path('client_list/', views.client_list, name='client_list'),
     path('project_list/', views.project_list, name='project_list'),
+<<<<<<< HEAD
     path('task/', views.task, name='task')
+=======
+from . import views
+
+urlpatterns = [
+    path('create_client/', views.create_client, name='create_client'),
+    path('create_project/', views.create_project, name='create_project'),
+    path('task/', views.task, name='task'),
+    path('task/create/', views.task_create, name='create_task'),
+    path('task/update/<int:task_id>/', views.update_task, name='update_task'),
+>>>>>>> Stashed changes
 ]
+=======
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> 88131984d588319065f2b975a7dbf887c23bdafc

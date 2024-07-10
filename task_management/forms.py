@@ -1,5 +1,5 @@
 from django import forms
-from .models import Task
+from .models import Task,Client,Project
 
 
 
@@ -24,3 +24,42 @@ class TaskForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(TaskForm, self).__init__(*args, **kwargs)
         self.fields['last_modified_by'].required = False
+
+class ClientForm(forms.ModelForm):
+
+    class Meta:
+        model = Client
+        fields = ['name', 'description',
+                  'active','industry',
+                  'email','phone',
+                  'user']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'active': forms.CheckboxInput(attrs={'class': 'form-control'}),
+            'industry': forms.Select(attrs={'class': 'form-control'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control'}),
+            'phone': forms.NumberInput(attrs={'class': 'form-control'}),
+        }
+    def __init__(self, *args, **kwargs):
+        super(ClientForm, self).__init__(*args, **kwargs)
+
+
+class ProjectForm(forms.ModelForm):
+
+    class Meta:
+        model = Project
+        fields = ['client', 'name',
+                  'status', 'start_date',
+                  'end_date']
+        widgets = {
+            'client': forms.Select(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'status': forms.Select(attrs={'class': 'form-control'}),
+            'start_date': forms.DateInput(attrs={'class': 'form-control','type': 'date'}),
+            'end_date': forms.DateInput(attrs={'class': 'form-control','type': 'date'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(ProjectForm, self).__init__(*args, **kwargs)
+

@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
+from .forms import TaskForm, ClientForm, ProjectForm
+from django.shortcuts import get_object_or_404
 from task_management.models import *
 
 def task(request):
@@ -8,28 +11,50 @@ def task(request):
 
 
 
-def client_list(request):
-    if request.method == 'GET':
-        clients = Client.objects.all()
-        context = {'clients': clients}
-        return render(request,'clients_list.html',context)
+def create_client(request):
+    if request.method == 'POST':
+        form = ClientForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('client_list')
+        else:
+            form = ClientForm()
 
-def project_list(request):
-    if request.method == 'GET':
-        project = Project.objects.all()
-        context = {'project': project}
-        return render(request, 'project_list.html', context)
+        return render(request, 'create_client.html', {'form': form})
+
+def create_project (request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('project_list')
+        else:
+            form = ProjectForm()
+        return render(request, 'create_project.html', {'form': form})
 
 
-def create_task(request):
+def task_create(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('task_list')  # Replace with your desired redirect URL
+            return redirect('task')
     else:
         form = TaskForm()
     return render(request, 'task_create.html', {'form': form})
+
+def update_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect('task_list')
+    else:
+        form = TaskForm(instance=task)
+    return render(request, 'update_task.html', {'form': form})
+
+
 
 
 
