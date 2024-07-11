@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task List</title>
+    {% include 'head.html' %}
+    <style>
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #F2D5D5;
+      }
+      .table-striped tbody tr:nth-of-type(even) {
+        background-color: #EBEAE8;
+      }
+      .task-title {
+        font-weight: bold;
+        color: black;
+        text-decoration: none;
+      }
+      .task-title:hover {
+        text-decoration: none;
+      }
+    </style>
+</head>
+<body>
+  {% block navbar %}
+  {% include 'navbar.html' %}
+{% endblock  %}
+<div class="container">
+  <h2>Task List</h2>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th>Title</th>
+        <th>Assignee</th>
+        <th>Reporter</th>
+        <th>Deadline Date</th>
+        <th>Created Date</th>
+        <th>Created By</th>
+        <th>Last Modified By</th>
+        <th>
+          <button id="add-task-btn" type="button" class="btn btn-primary" style="background-color: #D9B0B0;">Add Task</button>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task in tasks %}
+      <tr>
+        <td scope="col">{{ forloop.counter }}</td>
+        <td><a href="{% url 'task_management:update_task' task.id %}" class="task-title">{{ task.title }}</a></td>
+        <td>{{ task.assegnee }}</td>
+        <td>{{ task.reporter }}</td>
+        <td>{{ task.dead_line_date }}</td>
+        <td>{{ task.created_date }}</td>
+        <td>{{ task.created_by }}</td>
+        <td>{{ task.last_modified_by }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script>
+  document.getElementById('add-task-btn').addEventListener('click', function() {
+    window.location.href = "{% url 'task_management:create_task' %}";
+  });
+</script>
+</body>
+</html>

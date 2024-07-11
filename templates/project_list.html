@@ -6,31 +6,48 @@
     {% include 'head.html' %}
 </head>
 <body>
+  {% block navbar %}
+  {% include 'navbar.html' %}
+{% endblock  %}
+  <div class="container">
+    <h2>Project List</h2>
     <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Bill</th>
-                  <th>Cost</th>
-                  <th>Amount</th>
-                  <th>Status</th>
-                   <th>Created Date</th>
-              </thead>
-              {{ forloop.counter }} 
-                <tr>
-                  {% for project in project %}
-                  <td scope="col">{{ forloop.counter }}</td>
-                  <td>{{ project.client.name }}</td>
-                  <td>{{ project.name  }}</td>
-                  <td>{{ project.status }}</td>
-                  <td>{{ project.start_date }}</td>
-                  <td>{{ project.end_date }}</td>
-                  <td>{{ project.total_cost }}</td>
-                </tr>
-              {% endfor %}
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Bill</th>
+          <th>Cost</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Created Date</th>
+          <th>
+            <button id="add-project-btn" type="button" class="btn btn-primary" style="background-color: #D9B0B0;">Add Project</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for project in projects %}
+        <tr>
+          <td scope="col">{{ forloop.counter }}</td>
+          <td>{{ project.client.name }}</td>
+          <td>{{ project.name }}</td>
+          <td>{{ project.bill }}</td>
+          <td>{{ project.cost }}</td>
+          <td>{{ project.amount }}</td>
+          <td>{{ project.status }}</td>
+          <td>{{ project.created_date }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 
-         </table>
+         <script>
+          document.getElementById('add-project-btn').addEventListener('click', function() {
+            window.location.href = "{% url 'task_management:create_project' %}";
+          });
+        </script>
 </body>
 </html>

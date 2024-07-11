@@ -1,18 +1,25 @@
-{% load static %}
-<!DOCTYPE html>
-<!-- Coding By CodingNepal - codingnepalweb.com -->
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-   <title> All Navigation Menu Hover Animation | CodingLab </title> 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-   </head>
-<body>
-  <ul class="nav-links">
-    <li><a href="#">Dashboard</a></li>
-    <li class="center"><a href="#">Portfolio</a></li>
-    <li class="upward"><a href="#">Services</a></li>
-    <li class="forward"><a href="#">Feedback</a></li>
-  </ul>
-</body>
-</html>
+
+  <nav class="navbar navbar-light" style="background-color: #D9B0B0;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Task Managements System</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "task_management:client_list" %}">Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url "task_management:project_list" %}">Projects</a>
+          </li>
+          <a class="nav-link active" aria-current="page" href="{% url "task_management:task_list" %}">Tasks</a>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <br/>
+  <br/>
+
+  

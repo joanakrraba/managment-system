@@ -4,10 +4,10 @@ from .forms import TaskForm, ClientForm, ProjectForm
 from django.shortcuts import get_object_or_404
 from task_management.models import *
 
-def task(request):
+def task_list(request):
     tasks = Task.objects.all()
     context = {'tasks': tasks}
-    return render(request, 'task.html',context)
+    return render(request, 'task_list.html',context)
 
 def client_list(request):
     client = Client.objects.all()
@@ -18,7 +18,7 @@ def client_list(request):
 def project_list(request):
     project = Project.objects.all()
     context = {'projects': project}
-    return render(request, 'client_list.html', context)
+    return render(request, 'project_list.html', context)
 
 def create_client(request):
     if request.method == 'POST':

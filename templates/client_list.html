@@ -6,37 +6,57 @@
     <meta charset="UTF-8">
     <title>Client List</title>
     {% include 'head.html' %}
-   
+    <style>
+      .table-striped tbody tr:nth-of-type(odd) {
+        background-color: #F2D5D5;
+      }
+      .table-striped tbody tr:nth-of-type(even) {
+        background-color: #EBEAE8;
+      }
+    </style>
 </head>
 <body>
-        <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Active</th>
-                  <th>Industry</th>
-                  <th>Email</th>
-                  <th>Phone</th>
-                  <th>User</th>
-              </thead>
-              {{ forloop.counter }}
-                <tr>
-                  {% for client in clients %}
-                  <td scope="col">{{ forloop.counter }}</td>
-                   <td>{{ client.name }}</td>   
-                  <td>{{ client.description }}</td>
-                  <td scope="col">{% if client.active %}active{% else %}active{% endif %}</td>
-                  <td>{{ client.industry.name }}</td>
-                  <td>{{ client.email }}</td>
-                  <td>{{ client.phone }}</td>
-                  <td>{{ client.user }}</td>
-                </tr>
+        {% block navbar %}
+          {% include 'navbar.html' %}
+        {% endblock  %}
+        <div class="container">
+          <h2>Client List</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Active</th>
+                <th>Industry</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>User</th>
+                <th>
+                  <button id="add-client-btn" type="button" class="btn btn-primary" style="background-color: #D9B0B0;">Add Client</button>                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for client in clients %}
+              <tr>
+                <td scope="col">{{ forloop.counter }}</td>
+                <td>{{ client.name }}</td>
+                <td>{{ client.description }}</td>
+                <td scope="col">{% if client.active %}active{% else %}inactive{% endif %}</td>
+                <td>{{ client.industry.name }}</td>
+                <td>{{ client.email }}</td>
+                <td>{{ client.phone }}</td>
+                <td>{{ client.user }}</td>
+              </tr>
               {% endfor %}
+            </tbody>
+          </table>
+        </div>
 
-         </table>
-
-        
+        <script>
+          document.getElementById('add-client-btn').addEventListener('click', function() {
+            window.location.href = "{% url 'task_management:create_client' %}";
+          });
+        </script>
 </body>
 </html>
