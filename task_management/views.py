@@ -26,10 +26,10 @@ def create_client(request):
         if form.is_valid():
             form.save()
             return redirect('client_list')
-        else:
-            form = ClientForm()
+    else:
+        form = ClientForm()
 
-        return render(request, 'create_client.html', {'form': form})
+    return render(request, 'create_client.html', {'form': form})
 
 def create_project (request):
     if request.method == 'POST':
@@ -37,9 +37,9 @@ def create_project (request):
         if form.is_valid():
             form.save()
             return redirect('project_list')
-        else:
-            form = ProjectForm()
-        return render(request, 'create_project.html', {'form': form})
+    else:
+        form = ProjectForm()
+    return render(request, 'create_project.html', {'form': form})
 
 
 def task_create(request):
