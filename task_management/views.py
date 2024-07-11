@@ -29,7 +29,7 @@ def create_client(request):
         else:
             form = ClientForm()
 
-        return render(request, 'client_list.html', {'form': form})
+        return render(request, 'create_client.html', {'form': form})
 
 def create_project (request):
     if request.method == 'POST':
@@ -39,7 +39,7 @@ def create_project (request):
             return redirect('project_list')
         else:
             form = ProjectForm()
-        return render(request, 'project_list.html', {'form': form})
+        return render(request, 'create_project.html', {'form': form})
 
 
 def task_create(request):

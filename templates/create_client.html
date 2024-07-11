@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client Form</title>
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+   <div class="container mt-5">
+        <h2>{{ form.instance.id|default:"Create Client" }}</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_title">Title</label>
+                {{ form.title }}
+                {% if form.title.errors %}
+                    <div class="text-danger">
+                        {% for error in form.title.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_name">Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="text-danger">
+                        {% for error in form.name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_description">Description</label>
+                {{ form.description }}
+                {% if form.description.errors %}
+                    <div class="text-danger">
+                        {% for error in form.description.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_active">Active</label>
+                {{ form.active}}
+                {% if form.active.errors %}
+                    <div class="text-danger">
+                        {% for error in form.active.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_industry">Industry</label>
+                {{ form.industry }}
+                {% if form.industry.errors %}
+                    <div class="text-danger">
+                        {% for error in form.industry.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="text-danger">
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_phone">Phone</label>
+                {{ form.phone }}
+                {% if form.phone.errors %}
+                    <div class="text-danger">
+                        {% for error in form.phone.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_user">User</label>
+                {{ form.user }}
+                {% if form.user.errors %}
+                    <div class="text-danger">
+                        {% for error in form.user.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html> 
