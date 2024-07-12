@@ -1,5 +1,5 @@
 from django import forms
-from .models import Task,Client,Project
+from .models import Task,Client,Project,Attachment,Industry
 
 
 
@@ -62,4 +62,31 @@ class ProjectForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)
+
+class AttachmentForm(forms.ModelForm):
+
+    class Meta:
+        model = Attachment
+        fields = ['task', 'file', 'created_by']
+        widgets = {
+            'task': forms.Select(attrs={'class': 'form-control'}),
+            'file': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'create_by': forms.Select(attrs={'class': 'form-control','type': 'date'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(AttachmentForm, self).__init__(*args, **kwargs)
+
+class IndustryForm(forms.ModelForm):
+
+    class Meta:
+        model = Industry
+        fields = ['name', 'description']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super(IndustryForm, self).__init__(*args, **kwargs)
 

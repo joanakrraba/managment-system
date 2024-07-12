@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .forms import TaskForm, ClientForm, ProjectForm
+from .forms import TaskForm, ClientForm, ProjectForm, AttachmentForm, IndustryForm
 from django.shortcuts import get_object_or_404
 from task_management.models import *
 
@@ -26,8 +26,8 @@ def attachment_list(request):
     return render(request, 'attachment_list.html', context)
 
 def industry_list(request):
-    industry = Industry.objects.all()
-    context = {'industries': industry}
+    industries = Industry.objects.all()
+    context = {'industries': industries}
     return render(request, 'industry_list.html', context)
 
 def create_client(request):
@@ -51,6 +51,24 @@ def create_project (request):
         form = ProjectForm()
     return render(request, 'create_project.html', {'form': form})
 
+def create_attachment (request):
+    if request.method == 'POST':
+        form = AttachmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('attachment_list')
+    else:
+        form = AttachmentForm()
+    return render(request, 'create_attachment.html', {'form': form})
+def create_industry (request):
+    if request.method == 'POST':
+        form = IndustryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('industry_list')
+    else:
+        form = IndustryForm()
+    return render(request, 'create_industry.html', {'form': form})
 
 def task_create(request):
     if request.method == 'POST':
