@@ -20,6 +20,16 @@ def project_list(request):
     context = {'projects': project}
     return render(request, 'project_list.html', context)
 
+def attachment_list(request):
+    attachment = Attachment.objects.all()
+    context = {'attachments': attachment}
+    return render(request, 'attachment_list.html', context)
+
+def industry_list(request):
+    industry = Industry.objects.all()
+    context = {'industries': industry}
+    return render(request, 'industry_list.html', context)
+
 def create_client(request):
     if request.method == 'POST':
         form = ClientForm(request.POST)

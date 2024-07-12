@@ -15,4 +15,6 @@ urlpatterns = [
     path('create_project/', views.create_project, name='create_project'),
     path('create_task/', views.task_create, name='create_task'),
     path('update_task/<int:task_id>/', views.update_task, name='update_task'),
+    path('attachment_list/', views.attachment_list, name='attachment_list'),
+    path('industry_list/', views.industry_list, name='industry_list')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

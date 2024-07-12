@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Attachment List</title>
+    {% include 'head.html' %}
+</head>
+<body>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th>Task</th>
+          <th>File</th>
+          <th>Created Date</th>
+          <th>Created By</th>
+          <th>Last Modified Date</th>
+          <th>Last Modified By</th>
+        </tr>
+      </thead>
+      {{ forloop.counter }}  
+      <tbody>
+        {% for attachment in attachments %}
+        <tr>
+          <td scope="col">{{ forloop.counter }}</td>
+          <td>{{ project.task }}</td>
+          <td>{{ project.file }}</td>
+          <td>{{ project.created_date }}</td>
+          <td>{{ project.created_by }}</td>
+          <td>{{ project.last_modified_date }}</td>
+          <td>{{ project.last_modified_by }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Industry List</title>
+    {% include 'head.html' %}
+</head>
+<body>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for industry in industries %}
+        <tr>
+          <td scope="col">{{ forloop.counter }}</td>
+          <td>{{ project.name }}</td>
+          <td>{{ project.description }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+</body>
+</html>
