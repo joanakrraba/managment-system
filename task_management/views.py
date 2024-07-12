@@ -65,7 +65,7 @@ def create_industry (request):
         form = IndustryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('industry_list')
+            return redirect('task_management:industry_list')
     else:
         form = IndustryForm()
     return render(request, 'create_industry.html', {'form': form})
