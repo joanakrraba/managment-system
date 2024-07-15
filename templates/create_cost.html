@@ -6,6 +6,9 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+    {% block navbar %}
+  {% include 'navbar.html' %}
+{% endblock  %}
      <div class="container mt-5">
         <h2>{{ form.instance.id|default:"Create Cost" }}</h2>
         <form method="post" novalidate>
