@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Attachment</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% block navbar %}
+  {% include 'navbar.html' %}
+{% endblock  %}
+    <div class="container mt-5">
+        <h2>{{ form.instance.id|default:"Edit Attachment" }}</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_title">Task</label>
+                {{ form.task }}
+                {% if form.task.errors %}
+                    <div class="text-danger">
+                        {% for error in form.task.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_assegnee">File</label>
+                {{ form.file }}
+                {% if form.file.errors %}
+                    <div class="text-danger">
+                        {% for error in form.file.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_reporter">Created Date</label>
+                {{ form.created_date }}
+                {% if form.created_date.errors %}
+                    <div class="text-danger">
+                        {% for error in form.created_date.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_deadlineDate">Created_by</label>
+                {{ form.created_by }}
+                {% if form.created_by.errors %}
+                    <div class="text-danger">
+                        {% for error in form.created_by.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_created_by">Last Modify</label>
+                {{ form.last_modify }}
+                {% if form.last_modify.errors %}
+                    <div class="text-danger">
+                        {% for error in form.last_modify.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_last_modified_by">Last Modified By</label>
+                {{ form.last_modified_by }}
+                {% if form.last_modified_by.errors %}
+                    <div class="text-danger">
+                        {% for error in form.last_modified_by.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Cost Approval</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% block navbar %}
+  {% include 'navbar.html' %}
+{% endblock  %}
+     <div class="container mt-5">
+        <h2>{{ form.instance.id|default:"Create Cost Approval" }}</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_title">Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="text-danger">
+                        {% for error in form.name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_name">Cost</label>
+                {{ form.cost }}
+                {% if form.cost.errors %}
+                    <div class="text-danger">
+                        {% for error in form.cost.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+             <div class="form-group">
+                <label for="id_name">Status</label>
+                {{ form.status }}
+                {% if form.status.errors %}
+                    <div class="text-danger">
+                        {% for error in form.status.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+             <div class="form-group">
+                <label for="id_name">Task</label>
+                {{ form.task }}
+                {% if form.task.errors %}
+                    <div class="text-danger">
+                        {% for error in form.task.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+             <div class="form-group">
+                <label for="id_name">Created Date</label>
+                {{ form.created_date }}
+                {% if form.created_date.errors %}
+                    <div class="text-danger">
+                        {% for error in form.created_date.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+             <div class="form-group">
+                <label for="id_name">Created By</label>
+                {{ form.created_by }}
+                {% if form.created_by.errors %}
+                    <div class="text-danger">
+                        {% for error in form.created_by.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+             <div class="form-group">
+                <label for="id_name">Last Modified Date</label>
+                {{ form.last_modified_date }}
+                {% if form.last_modified_date.errors %}
+                    <div class="text-danger">
+                        {% for error in form.last_modified_by.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+             <div class="form-group">
+                <label for="id_name">Last Modified By</label>
+                {{ form.last_modified_by }}
+                {% if form.last_modified_by.errors %}
+                    <div class="text-danger">
+                        {% for error in form.last_modified_by.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form> 
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

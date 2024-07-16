@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Bill</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% block navbar %}
+  {% include 'navbar.html' %}
+{% endblock  %}
+    <div class="container mt-5">
+        <h2>{{ form.instance.id|default:"Create Bill" }}</h2>
+        <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_title">Name</label>
+                {{ form.name}}
+                {% if form.name.errors %}
+                    <div class="text-danger">
+                        {% for error in form.name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_name">Client</label>
+                {{ form.client }}
+                {% if form.client.errors %}
+                    <div class="text-danger">
+                        {% for error in form.client.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_description">Project</label>
+                {{ form.project }}
+                {% if form.project.errors %}
+                    <div class="text-danger">
+                        {% for error in form.project.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_active">description</label>
+                {{ form.description}}
+                {% if form.description.errors %}
+                    <div class="text-danger">
+                        {% for error in form.description.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_industry">Bill Registered Date</label>
+                {{ form.bill_registered_date }}
+                {% if form.bill_registered_date.errors %}
+                    <div class="text-danger">
+                        {% for error in form.bill_registered_date.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Bill Paid Date</label>
+                {{ form.bill_paid_date}}
+                {% if form.bill_paid_date.errors %}
+                    <div class="text-danger">
+                        {% for error in form.bill_paid_date.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Bill Paid Date</label>
+                {{ form.bill_paid_date}}
+                {% if form.bill_paid_date.errors %}
+                    <div class="text-danger">
+                        {% for error in form.bill_paid_date.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Total</label>
+                {{ form.total}}
+                {% if form.total.errors %}
+                    <div class="text-danger">
+                        {% for error in form.total.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Status</label>
+                {{ form.status}}
+                {% if form.status.errors %}
+                    <div class="text-danger">
+                        {% for error in form.status.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="id_email">Created Date</label>
+                {{ form.created_date}}
+                {% if form.created_date.errors %}
+                    <div class="text-danger">
+                        {% for error in form.created_date.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+   </div>
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
