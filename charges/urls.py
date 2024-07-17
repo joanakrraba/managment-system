@@ -18,9 +18,9 @@ urlpatterns = [
     path('create_cost/', views.create_cost, name='create_cost'),
     path('create_payment_request/', views.create_payment_request, name='create_payment_request'),
     path('create_payment/', views.create_payment, name='create_payment'),
-    path('edit_bill/', views.edit_bill, name='edit_bill'),
-    path('edit_cost/', views.edit_cost, name='edit_cost'),
-    path('edit_cost_approval/', views.edit_cost_approval, name='edit_cost_approval'),
-    path('edit_payment_request/', views.edit_payment_request, name='edit_payment_request'),
-    path('edit_payment/', views.edit_payment, name='edit_payment')
+    path('edit_bill/<int:bill_id>/', views.edit_bill, name='edit_bill'),
+    path('edit_cost/<int:cost_id>/', views.edit_cost, name='edit_cost'),
+    path('edit_cost_approval/<int:cost_approval_id>/', views.edit_cost_approval, name='edit_cost_approval'),
+    path('edit_payment_request/<int:payment_request_id>/', views.edit_payment_request, name='edit_payment_request'),
+    path('edit_payment/<int:payment_id>/', views.edit_payment, name='edit_payment')
 ]
