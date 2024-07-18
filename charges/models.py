@@ -2,6 +2,8 @@ from django.db import models
 from Users.models import User
 from task_management.models import Client,Task,Project,Status
 
+
+
 class Cost(models.Model):
     name = models.CharField(max_length=225)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
@@ -24,6 +26,10 @@ class CostApproval(models.Model):
     created_by = models.ForeignKey(User,related_name='user_cost_approvals',on_delete=models.SET_NULL,null=True)
     last_modified_date = models.DateTimeField()
     last_modified_by = models.ForeignKey(User, related_name='last_modified_user_cost_approvals',on_delete=models.SET_NULL,null=True)
+
+
+
+
 
 
 class Bill(models.Model):
@@ -55,3 +61,6 @@ class Payment(models.Model):
     task = models.ForeignKey(Task,related_name='task_payments',on_delete=models.SET_NULL,null=True)
     amount = models.DecimalField(max_digits=10,decimal_places=2)
 
+
+
+from .import signals
