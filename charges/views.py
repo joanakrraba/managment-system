@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from .forms import BillForm,CostApprovalForm,CostForm,PaymentRequestForm,PaymentForm,EditBillForm,EditCostForm,EditCostApprovalForm,EditPaymentRequestForm,EditPaymentForm
 from charges.models import *
 from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
 
 
 def payment_list(request):
@@ -140,3 +141,21 @@ def edit_payment(request, payment_id):
     else:
         form = PaymentForm(instance=payment)
     return render(request, 'edit_payment.html', {'form': form})
+
+def manage_cost_approval(request,cost_approval_id):
+    if request.method == "GET":
+        cost_approval = Cost.objects.all()
+        context = {'costs_approval': cost_approval}
+        return render(request, 'manage_cost_approval.html', context)
+
+
+def update_cost_approval_status(request, cost_approval_id):
+    cost_approval = get_object_or_404(CostApproval, id=cost_approval_id)
+    status = request.POST.get('status')
+    if status in ['Approved', 'Rejected']:
+        cost_approval.status = status
+        cost_approval.save()
+        return JsonResponse({'status': 'success'})
+    else:
+        return JsonResponse({'status': 'error'}, status=400)
+

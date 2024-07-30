@@ -22,5 +22,7 @@ urlpatterns = [
     path('edit_cost/<int:cost_id>/', views.edit_cost, name='edit_cost'),
     path('edit_cost_approval/<int:cost_approval_id>/', views.edit_cost_approval, name='edit_cost_approval'),
     path('edit_payment_request/<int:payment_request_id>/', views.edit_payment_request, name='edit_payment_request'),
-    path('edit_payment/<int:payment_id>/', views.edit_payment, name='edit_payment')
+    path('edit_payment/<int:payment_id>/', views.edit_payment, name='edit_payment'),
+    path('manage_cost_approval/<int:cost_approval_id>/', views.manage_cost_approval, name='manage_cost_approval'),
+    path('update_cost_approval_status/<int:cost_approval_id>/', views.update_cost_approval_status,name='update_status'),
 ]

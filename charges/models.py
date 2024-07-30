@@ -5,31 +5,42 @@ from task_management.models import Client,Task,Project,Status
 
 
 class Cost(models.Model):
+
+    STATUS_CHOICES = (
+        ('approve', 'Approve'),
+        ('reject', 'Reject'),
+
+    )
+
     name = models.CharField(max_length=225)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
     client = models.ForeignKey(Client,on_delete=models.CASCADE,related_name='client_costs')
     task = models.ForeignKey(Task,related_name='client_tasks',on_delete=models.SET_NULL,null=True)
     description = models.TextField()
     project = models.ForeignKey(Project,related_name='project_costs',on_delete=models.SET_NULL,null=True)
-    status = models.CharField(max_length=225,choices=Status,default='Requested')
+    status = models.CharField(max_length=225,choices=STATUS_CHOICES,default='Requested')
     created_date = models.DateTimeField()
     created_by = models.ForeignKey(User,related_name='user_costs',on_delete=models.SET_NULL,null=True)
     last_modified_date = models.DateTimeField()
     last_modified_by = models.ForeignKey(User,related_name='last_modified_user_costs',on_delete=models.SET_NULL,null=True)
 
+
 class CostApproval(models.Model):
+
+    STATUS_CHOICES = (
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected'),
+        
+    )
+
     name = models.CharField(max_length=225)
     cost = models.ForeignKey(Cost,related_name='cost_approvals',on_delete=models.SET_NULL,null=True)
-    status = models.CharField(max_length=225,choices=Status,default='Draft')
+    status = models.CharField(max_length=225,choices=STATUS_CHOICES,default='Draft')
     task = models.ForeignKey(Task,related_name='task_cost_approvals',on_delete=models.SET_NULL,null=True)
     created_date = models.DateTimeField()
     created_by = models.ForeignKey(User,related_name='user_cost_approvals',on_delete=models.SET_NULL,null=True)
     last_modified_date = models.DateTimeField()
     last_modified_by = models.ForeignKey(User, related_name='last_modified_user_cost_approvals',on_delete=models.SET_NULL,null=True)
-
-
-
-
 
 
 class Bill(models.Model):
@@ -64,3 +75,5 @@ class Payment(models.Model):
 
 
 from .import signals
+
+
