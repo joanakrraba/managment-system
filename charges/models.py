@@ -7,8 +7,9 @@ from task_management.models import Client,Task,Project,Status
 class Cost(models.Model):
 
     STATUS_CHOICES = (
-        ('approve', 'Approve'),
+        ('approval', 'Approval'),
         ('reject', 'Reject'),
+        ('pending','Pending')
 
     )
 
@@ -28,8 +29,9 @@ class Cost(models.Model):
 class CostApproval(models.Model):
 
     STATUS_CHOICES = (
-        ('approved', 'Approved'),
+        ('approval', 'Approval'),
         ('rejected', 'Rejected'),
+        ('pending', 'Pending')
         
     )
 

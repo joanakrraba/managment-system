@@ -15,7 +15,8 @@ def create_cost_approval(sender, instance, created, **kwargs):
         instance.save()
 
         # Create the CostApproval record
-        CostApproval.objects.create(
+
+        cost_approval = CostApproval.objects.create(
             name=f"Cost Approval for {instance.name}",
             cost=instance,
             status='Draft',
@@ -25,16 +26,18 @@ def create_cost_approval(sender, instance, created, **kwargs):
             last_modified_date=timezone.now(),
             last_modified_by=instance.created_by
         )
-
+        # Send an email with the cost approval URL
+        send_cost_approval_email(cost_approval)
 
 def send_cost_approval_email(cost_approval):
     subject = 'New Cost Approval Request'
-    message = f'Please review the cost approval at the following link: 120.1.2.1/charges/{cost_approval.id}'
+    message = f'Please review the cost approval at the following link: 120.1.2.1/charges/manage_cost_approval/{cost_approval.id}'
     recipient_list = ['joanakrraba6@gmail.com']
 
     send_mail(
         subject,
         message,
+        settings.DEFAULT_FROM_EMAIL,
         recipient_list,
         fail_silently=False,
     )
