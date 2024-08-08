@@ -144,7 +144,7 @@ def edit_payment(request, payment_id):
 
 def manage_cost_approval(request,cost_approval_id):
     if request.method == "GET":
-        cost_approval = Cost.objects.all()
+        cost_approval = get_object_or_404(CostApproval, id=cost_approval_id)
         context = {'costs_approval': cost_approval}
         return render(request, 'manage_cost_approval.html', context)
 
