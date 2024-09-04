@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Management system
+    </title>
+    {% include 'head.html' %}
+</head>
+<body>
+
+    {% block navbar %}
+    {% include 'navbar.html' %}
+  {% endblock  %}
+
+  <div class="card" style="width: 18rem; margin-left: auto; margin-right: auto;">
+    <div class="card-body">
+        <div id="card-content">
+            <h5 class="card-title">Wellcome To Management System</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Continue using one of the following apps</h6>
+
+            <br/>
+            <a class="btn btn-primary" href='{% url "task_management:client_list" %}' role="button">Task Management</a>
+            <a class="btn btn-primary" href='{% url "charges:payment_list" %}' role="button">Charges</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
